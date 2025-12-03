@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resumen de Información</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<h1>Resumen de tus datos:</h1>
+<p>Nombre: <span th:text="${infoForm1.nombre}"></span></p>
+<p>Edad: <span th:text="${infoForm1.edad}"></span></p>
+<p>Aficiones: 
+    <span th:each="af : ${infoForm1.aficciones}" th:text="${af} + ' '"></span>
+</p>
+</body>
+</html>

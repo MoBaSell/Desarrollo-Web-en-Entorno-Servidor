@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resultado</title>
+</head>
+<body>
+  <h1>Resultado</h1>
+
+  <p>
+    <strong>Nombre: </strong><span th:text="${nombre}"></span>
+  </p>
+  <p>
+    <strong>Apellido: </strong><span th:text="${apellido}"></span>
+  </p>
+  <p>
+    <strong>¿Tienes mascota?: </strong><span th:text="${mascota}"></span>
+  </p>
+
+  <p><strong>¿Cuántas veces lo sacas?</strong></p>
+  <ul>
+    <!-- Itera sobre el array de salidas -->
+    <li th:each="s : ${salidas}" th:text="${s}"></li>
+    <!-- Fallback opcional si viniera null -->
+    <!-- <li th:if="${salidas == null}">Sin datos</li> -->
+  </ul>
+
+  <!-- Botón para reiniciar el flujo -->
+  <form action="/" method="get">
+    <button type="submit">Volver al principio</button>
+  </form>
+  <form th:action="@{/form3}" method="get">
+  	<input type="hidden" name="nombre" th:value="${nombre}"/>
+  	<input type="hidden" name="apellido" th:value="${apellido}" />
+  	<input type="hidden" name="mascota" th:value="${mascota}" />
+	<input type="hidden" th:each="s : ${salidas}" name="salidas" th:value="${s}" />
+  	<button type="submit">Volver</button>
+  </form>
+</body>
+</html>

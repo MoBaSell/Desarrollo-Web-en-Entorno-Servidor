@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Paso 3 - Salidas</title>
+</head>
+<body>
+  <h1>Último paso</h1>
+
+  <!-- Formulario del paso 3: captura "salidas" (checkboxes) -->
+  <form action="/resultado" method="post">
+    <!-- Mensaje de error si no se seleccionó ninguna opción -->
+    <p th:if="${errorSalidas}" th:text="${errorSalidas}"></p>
+
+    <!-- Propagar valores previos -->
+    <input type="hidden" name="nombre" th:value="${nombre}" />
+    <input type="hidden" name="apellido" th:value="${apellido}" />
+    <input type="hidden" name="mascota" th:value="${mascota}" />
+
+    <div>
+      <label>¿Cuántas veces a la semana sacas al perro?</label><br />
+      <!-- Mantener selección si se vuelve por error -->
+      <label>
+        <input type="checkbox" name="salidas" value="10 a la semana"
+               th:checked="${salidas != null and #lists.contains(salidas, '10 a la semana')}" />
+        10 a la semana
+      </label><br />
+      <label>
+        <input type="checkbox" name="salidas" value="20 a la semana"
+               th:checked="${salidas != null and #lists.contains(salidas, '20 a la semana')}" />
+        20 a la semana
+      </label><br />
+      <label>
+        <input type="checkbox" name="salidas" value="30 a la semana"
+               th:checked="${salidas != null and #lists.contains(salidas, '30 a la semana')}" />
+        30 a la semana
+      </label><br />
+      <label>
+        <input type="checkbox" name="salidas" value="40 a la semana"
+               th:checked="${salidas != null and #lists.contains(salidas, '40 a la semana')}" />
+        40 a la semana
+      </label>
+    </div>
+
+    <button type="submit">Terminar el cuestionario</button>
+  </form>
+  <form th:action="@{/form2}" method="get">
+		<input type="hidden" name="nombre" th:value="${nombre}"/>
+		<input type="hidden" name="apellido" th:value="${apellido}" />
+		<input type="hidden" name="mascota" th:value="${mascota}" />
+		<button type="submit">Volver</button>
+  </form>
+</body>
+</html>

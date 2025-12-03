@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario Informacion Personal</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <h1>Introduce tu nombre: </h1>
+    <form th:action="@{/form2}" th:object="${infoForm1}" method="post">
+        <div>
+            <label>Nombre:</label>
+            <input type="text" th:field="*{nombre}"/>
+            <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
+        </div>
+        
+                 
+        <button type="submit">Enviar</button>
+		<input type="hidden" th:field="*{aficciones}">
+		<input type="hidden" th:field="*{edad}">
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Formulario Informacion Personal</title>
+	<meta charset="UTF-8" />
+</head>
+
+<body>
+	<div>
+		<h1>Elige tus aficciones: </h1>
+		<form th:action="@{/form4}" th:object="${infoForm1}" method="post">
+			<label>Elige tus aficciones: </label>
+			<label>Correr</label>
+			<input type="checkbox" th:field="*{aficciones}" value="Correr" />
+
+			<label>Leer</label>
+			<input type="checkbox" th:field="*{aficciones}" value="Leer" />
+
+			<label>Boxeo</label>
+			<input type="checkbox" th:field="*{aficciones}" value="Boxeo" />
+			<input type="hidden" th:field="*{nombre}">
+			<input type="hidden" th:field="*{edad}">
+
+			<button type="submit">Enviar</button>
+	</div>
+	</form>
+
+
+</body>
+
+</html>
