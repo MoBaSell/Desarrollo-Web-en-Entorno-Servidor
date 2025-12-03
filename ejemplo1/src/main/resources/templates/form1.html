@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Paso 1 - Nombre</title>
+</head>
+<body>
+  <h1>Hola</h1>
+  <h2>¿Cómo te llamas?</h2>
+
+  <!-- Formulario del paso 1: captura "nombre" -->
+  <form action="/form2" method="post">
+    <label>Nombre:</label>
+    <!-- Muestra el error del controlador, si existe -->
+    <p th:if="${errorNombre}" th:text="${errorNombre}"></p>
+
+    <!-- Mantiene lo escrito por el usuario en caso de error -->
+    <input type="text" name="nombre" th:value="${nombre}" />
+
+    <button type="submit">Siguiente</button>
+  </form>
+</body>
+</html>

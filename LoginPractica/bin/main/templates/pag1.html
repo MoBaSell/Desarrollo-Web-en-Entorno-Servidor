@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Página 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f7ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 {
+            color: #0056b3;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .nav-links a {
+            display: inline-block;
+            margin: 10px;
+            text-decoration: none;
+            color: #0056b3;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #003f7f;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>¡Bienvenido/a, <span th:text="${session.usuario}">[Nombre de Usuario]</span>!</h1>
+    <p>Esta es la Página 1</p>
+
+    <div class="nav-links">
+        <a href="/pagina1">Ir a Página 1</a>
+        <a href="/pagina2">Ir a Página 2</a>
+        <a href="/cerrar">Cerrar sesión</a>
+    </div>
+</div>
+</body>
+</html>
