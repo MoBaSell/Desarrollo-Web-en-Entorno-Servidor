@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Paso 2 - Apellido y Mascota</title>
+</head>
+<body>
+  <h1>Cuéntame sobre ti...</h1>
+
+  <!-- Formulario del paso 2: captura "apellido" y "mascota" -->
+  <form action="/form3" method="post">
+    <!-- Propagar "nombre" del paso anterior -->
+    <input type="hidden" name="nombre" th:value="${nombre}" />
+
+    <div>
+      <label>Apellido:</label>
+      <!-- Muestra el error del controlador, si existe -->
+      <p th:if="${errorApellido}" th:text="${errorApellido}"></p>
+      <!-- Mantiene el valor introducido -->
+      <input type="text" name="apellido" th:value="${apellido}" />
+    </div>
+
+    <div>
+      <label>¿Tienes mascota?</label>
+      <!-- Mantener la selección si se vuelve a este paso -->
+      <label>
+        <input type="radio" name="mascota" value="Si" th:checked="${mascota == 'Si'}" /> Si
+      </label>
+      <label>
+        <input type="radio" name="mascota" value="No" th:checked="${mascota == 'No'}" /> No
+      </label>
+    </div>
+
+    <button type="submit">Siguiente</button>
+  </form>
+</body>
+</html>

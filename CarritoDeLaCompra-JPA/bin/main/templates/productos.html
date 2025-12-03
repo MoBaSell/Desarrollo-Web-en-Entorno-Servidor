@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tienda</title>
+</head>
+<body>
+
+<h1>Tienda</h1>
+
+<p th:if="${mensaje}" th:text="${mensaje}"></p>
+
+<p th:if="${usuario}">Hola, <span th:text="${usuario}"></span>!</p>
+
+<table border="1">
+    <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Carrito</th>
+        <th>Añadir</th>
+    </tr>
+
+    <tr th:each="p : ${productos}">
+        <td th:text="${p.nombre}"></td>
+        <td th:text="${p.precio}"></td>
+        <td th:text="${p.stock}"></td>
+
+        <td th:text="${carrito[p.nombre]} ?: 0"></td>
+
+        <td>
+            <form action="/aniadir" method="post">
+                <input type="hidden" name="nombre" th:value="${p.nombre}">
+                <input type="number" name="cantidad" min="0">
+                <button type="submit">Actualizar</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<h3>Total: <span th:text="${total}"></span> €</h3>
+
+<form action="/finalizar" method="post">
+    <button type="submit">Finalizar compra</button>
+</form>
+
+</body>
+</html>
