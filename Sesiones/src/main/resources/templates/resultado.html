@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario Informacion Personal</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <h1>Resultado</h1>
+	<ol>
+   	<li th:each="elemento:${Info}" th:text="${elemento}"></li>		
+	</ol>
+
+	<form th:action="@{/form3}" th:object="${InfoForm}" method="get">
+			<button type="submit">Volver</button>
+			<input type="hidden" th:field="${InfoForm.nombre}" />
+			<input type="hidden" th:field="${InfoForm.edad}" />
+			<input type="hidden" th:field="${InfoForm.estudiosSeleccionados}" />
+	</form>	
+</body>

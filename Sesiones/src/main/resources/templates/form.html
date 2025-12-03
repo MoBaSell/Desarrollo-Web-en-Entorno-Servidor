@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario Grasa Corporal</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <h1>Calcular % Grasa Corporal</h1>
+    <form th:action="@{/form}" th:object="${grasaForm}" method="post">
+        <div>
+            <label for="imc">IMC:</label>
+            <input type="number" step="0.01" th:field="*{imc}" id="imc" />
+            <div th:if="${#fields.hasErrors('imc')}" th:errors="*{imc}"></div>
+        </div>
+
+        <div>
+            <label for="edad">Edad:</label>
+            <input type="number" th:field="*{edad}" id="edad" min="1" max="100" />
+            <div th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></div>
+        </div>
+
+        <div>
+            <label>Género:</label>
+            <input type="radio" th:field="*{genero}" id="generoM" value="1" />
+            <label for="generoM">Hombre</label>
+
+            <input type="radio" th:field="*{genero}" id="generoF" value="0" />
+            <label for="generoF">Mujer</label>
+            <div th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></div>
+        </div>
+
+        <button type="submit">Calcular</button>
+    </form>
+</body>
+</html>

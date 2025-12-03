@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FFormulario Informacion Personal</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <h1>Introduce tus datos: </h1>
+	<form th:action="@{/resultado}" th:object="${InfoForm}" method="post">
+	    <div>
+	        <label>Estudios Completados (Selección Múltiple):</label>
+	        
+	        <input type="checkbox" th:field="*{estudiosSeleccionados}" value="ESO" id="ESO" />
+	        <label for="ESO">E.S.O.</label>
+
+	        <input type="checkbox" th:field="*{estudiosSeleccionados}" value="BACHILLERATO" id="bachillerato" />
+	        <label for="bachillerato">Bachillerato</label>
+	        
+	        <input type="checkbox" th:field="*{estudiosSeleccionados}" value="UNIVERSIDAD" id="universidad" />
+	        <label for="universidad">Universidad</label>
+	        
+	        <div th:if="${#fields.hasErrors('estudiosSeleccionados')}" th:errors="*{estudiosSeleccionados}"></div>
+	    </div>
+		
+		<input type="hidden" th:field="*{nombre}" />
+		<input type="hidden" th:field="*{edad}" />
+		<input type="hidden" th:field="*{genero}" />
+		
+        <button type="submit">Enviar</button>
+	</form>
+	<form th:action="@{/form2}" th:object="${InfoForm}" method="get">
+			<button type="submit">Volver</button>
+			
+			<input type="hidden" th:field="${InfoForm.nombre}" />
+			<input type="hidden" th:field="${InfoForm.edad}" />
+			<input type="hidden" th:field="${InfoForm.estudiosSeleccionados}" />
+	</form>	
+</body>
+</html>
